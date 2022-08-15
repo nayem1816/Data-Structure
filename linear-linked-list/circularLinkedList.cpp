@@ -52,10 +52,6 @@ void display(Node *&head)
     cout << endl;
 }
 
-// void displayReverse(Node *&head)
-// {
-// }
-
 void insertAtHead(Node *&head, int value)
 {
     Node *newNode = new Node(value);

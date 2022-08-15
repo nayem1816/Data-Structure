@@ -2,6 +2,7 @@
 
 1. Singly linked list
 2. Doubly linked list
+3. Circular Linked List
 
 ### Singly Linked List Operations
 

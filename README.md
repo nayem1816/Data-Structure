@@ -24,7 +24,8 @@
 17. Choice-17: Mid value in this linked list
 18. Choice-18: Create Cycle in this linked list
 19. Choice-19: Detect Cycle in this linked list
-20. Choice-19: Remove Cycle in this linked list
+20. Choice-20: Remove Cycle in this linked list
+21. Choice-0: EXIT
 
 ### Doubly Linked List Operations
 
@@ -33,6 +34,7 @@
 3. Choice-3: Reverse doubly linked list
 4. Choice-4: Insert at head
 5. Choice-5: Insert at tail
+6. Choice-0: EXIT
 
 ### Circular Linked List Operations
 
@@ -43,3 +45,4 @@
 5. Choice-5: Insert at tail
 6. Choice-6: Delate at head
 7. Choice-7: Delate at tail
+8. Choice-0: EXIT

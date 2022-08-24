@@ -8,6 +8,9 @@
 
 -   create template just (int)
 
+1. Reverse Sentence
+2. reverse Stack
+
 ### Singly Linked List Operations
 
 -   Choice-1: Count the number of nodes in the linked list

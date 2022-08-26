@@ -6,7 +6,7 @@
 
 ## Stack
 
--   create template just (int)
+-   create template
 
 1. Reverse Sentence
 2. reverse Stack

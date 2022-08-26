@@ -11,6 +11,10 @@
 1. Reverse Sentence
 2. reverse Stack
 
+## Queue
+
+-   create template
+
 ### Singly Linked List Operations
 
 -   Choice-1: Count the number of nodes in the linked list

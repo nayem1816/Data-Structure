@@ -1,5 +1,9 @@
 # Data-Structure
 
+---
+
+# Linear Data Structure
+
 1. Singly linked list
 2. Doubly linked list
 3. Circular Linked List
@@ -14,6 +18,16 @@
 ## Queue
 
 -   create template
+
+---
+
+# Non Linear Data Structure
+
+## Tree
+
+1. Binary tree
+
+---
 
 ### Singly Linked List Operations
 

@@ -42,6 +42,7 @@ void display(Node *&head)
         }
         temp = temp->next;
     }
+
     cout << endl;
 }
 

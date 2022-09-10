@@ -42,23 +42,37 @@ void display(doublyNode *&head)
     cout << endl;
 }
 
-void displayReverse(doublyNode *&head)
+void reverseDoublyList(doublyNode *&head)
 {
+
     doublyNode *temp = head;
-    while (temp->next != NULL)
-    {
-        temp = temp->next;
-    }
+    doublyNode *prev = NULL;
+    doublyNode *next = NULL;
     while (temp != NULL)
     {
-        cout << temp->value;
-        if (temp->prev != NULL)
-        {
-            cout << " -> ";
-        }
-        temp = temp->prev;
+        next = temp->next;
+        temp->next = prev;
+        temp->prev = next;
+        prev = temp;
+        temp = next;
     }
-    cout << endl;
+    head = prev;
+
+    // doublyNode *temp = head;
+    // while (temp->next != NULL)
+    // {
+    //     temp = temp->next;
+    // }
+    // while (temp != NULL)
+    // {
+    //     cout << temp->value;
+    //     if (temp->prev != NULL)
+    //     {
+    //         cout << " -> ";
+    //     }
+    //     temp = temp->prev;
+    // }
+    // cout << endl;
 }
 
 void insertAtHead(doublyNode *&head, int value)
@@ -115,8 +129,7 @@ int main()
             break;
 
         case 3:
-            cout << "Display in the doubly linked list reverse: ";
-            displayReverse(head);
+            reverseDoublyList(head);
             break;
 
         case 4:

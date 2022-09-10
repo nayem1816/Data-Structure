@@ -40,16 +40,24 @@ void display(Node *&head)
         cout << "The linked list is empty." << endl;
         return;
     }
-    do
+
+    while (temp->next != NULL)
     {
-        cout << temp->value;
+        cout << temp->value << " ";
         temp = temp->next;
-        if (temp != head)
-        {
-            cout << " -> ";
-        }
-    } while (temp != head);
-    cout << endl;
+    }
+    temp->next = head;
+
+    // do
+    // {
+    //     cout << temp->value;
+    //     temp = temp->next;
+    //     if (temp != head)
+    //     {
+    //         cout << " -> ";
+    //     }
+    // } while (temp != head);
+    // cout << endl;
 }
 
 void insertAtHead(Node *&head, int value)

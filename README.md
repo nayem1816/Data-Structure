@@ -26,9 +26,10 @@
 ## Tree
 
 1. Binary tree
-    1. Pre-order binary tree
-    2. In-order binary tree
-    3. Post-order binary tree
+    1. Pre-order traversal
+    2. In-order traversal
+    3. Post-order traversal
+    4. Level-order traversal
 
 ---
 

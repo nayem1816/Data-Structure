@@ -27,6 +27,7 @@ void inOrder(treeNode *root, string &chk)
     chk += to_string(root->data);
     inOrder(root->rightChild, chk);
 }
+
 void preOrder(treeNode *root, string &chk)
 {
     if (root == NULL)
@@ -35,6 +36,7 @@ void preOrder(treeNode *root, string &chk)
     preOrder(root->leftChild, chk);
     preOrder(root->rightChild, chk);
 }
+
 void postOrder(treeNode *root, string &chk)
 {
     if (root == NULL)
@@ -42,6 +44,56 @@ void postOrder(treeNode *root, string &chk)
     postOrder(root->leftChild, chk);
     postOrder(root->rightChild, chk);
     chk += to_string(root->data);
+}
+
+int levelOrderTraversal(treeNode *root, string &chk, int k)
+{
+    if (root == NULL)
+    {
+        return -1;
+    }
+
+    int level = 0;
+    queue<treeNode *> q;
+    q.push(root);
+    q.push(NULL);
+    int max = -9999;
+
+    while (!q.empty())
+    {
+        treeNode *chkNode = q.front();
+        q.pop();
+        if (chkNode != NULL)
+        {
+            if (level == k)
+            {
+                if (max < chkNode->data)
+                {
+                    max = chkNode->data;
+                }
+            }
+            cout << chkNode->data << " ";
+            chk += to_string(chkNode->data);
+            if (chkNode->leftChild != NULL)
+            {
+                q.push(chkNode->leftChild);
+            }
+            if (chkNode->rightChild != NULL)
+            {
+                q.push(chkNode->rightChild);
+            }
+        }
+        else
+        {
+            if (!q.empty())
+            {
+                q.push(NULL);
+                level++;
+            }
+        }
+    }
+
+    return max;
 }
 
 void printTree(treeNode *root, int level)
@@ -77,7 +129,6 @@ void printTree(treeNode *root, int level)
         printTree(root->rightChild, level + 1);
     }
 }
-
 void spacePrint(int level)
 {
     for (int i = 0; i < level; i++)
@@ -122,18 +173,25 @@ int main()
         }
     }
 
-    printTree(allNodes[0], 0);
+    // printTree(allNodes[0], 0);
 
     string inOrderTraversal = "";
     string preOrderTraversal = "";
     string postOrderTraversal = "";
-    inOrder(allNodes[0], inOrderTraversal);
-    preOrder(allNodes[0], preOrderTraversal);
-    postOrder(allNodes[0], postOrderTraversal);
+    string lavelordertraversal = "";
 
-    cout << "In-order Traversal: " << inOrderTraversal << endl;
-    cout << "Pre-order Traversal: " << preOrderTraversal << endl;
-    cout << "Post-order Traversal: " << postOrderTraversal << endl;
+    // inOrder(allNodes[0], inOrderTraversal);
+    // preOrder(allNodes[0], preOrderTraversal);
+    // postOrder(allNodes[0], postOrderTraversal);
+
+    int maxValueAtK = levelOrderTraversal(allNodes[0], lavelordertraversal, 2);
+
+    // cout << "In-order Traversal: " << inOrderTraversal << endl;
+    // cout << "Pre-order Traversal: " << preOrderTraversal << endl;
+    // cout << "Post-order Traversal: " << postOrderTraversal << endl;
+
+    cout << endl;
+    cout << maxValueAtK << endl;
 
     return 0;
 }
@@ -149,7 +207,7 @@ Total Node =
 2 5 6
 3 -1 -1
 4 -1 -1
-6 7 8
+5 7 8
 6 -1 -1
 7 -1 -1
 8 -1 -1

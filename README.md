@@ -30,6 +30,7 @@
     2. In-order traversal
     3. Post-order traversal
     4. Level-order traversal
+    5. Pre Order to In Order
 
 ---
 

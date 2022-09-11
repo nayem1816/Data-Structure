@@ -19,6 +19,31 @@ public:
 void printTree(treeNode *root, int level);
 void spacePrint(int level);
 
+void inOrder(treeNode *root, string &chk)
+{
+    if (root == NULL)
+        return;
+    inOrder(root->leftChild, chk);
+    chk += to_string(root->data);
+    inOrder(root->rightChild, chk);
+}
+void preOrder(treeNode *root, string &chk)
+{
+    if (root == NULL)
+        return;
+    chk += to_string(root->data);
+    preOrder(root->leftChild, chk);
+    preOrder(root->rightChild, chk);
+}
+void postOrder(treeNode *root, string &chk)
+{
+    if (root == NULL)
+        return;
+    postOrder(root->leftChild, chk);
+    postOrder(root->rightChild, chk);
+    chk += to_string(root->data);
+}
+
 void printTree(treeNode *root, int level)
 {
     if (root == NULL)
@@ -98,6 +123,17 @@ int main()
     }
 
     printTree(allNodes[0], 0);
+
+    string inOrderTraversal = "";
+    string preOrderTraversal = "";
+    string postOrderTraversal = "";
+    inOrder(allNodes[0], inOrderTraversal);
+    preOrder(allNodes[0], preOrderTraversal);
+    postOrder(allNodes[0], postOrderTraversal);
+
+    cout << "In-order Traversal: " << inOrderTraversal << endl;
+    cout << "Pre-order Traversal: " << preOrderTraversal << endl;
+    cout << "Post-order Traversal: " << postOrderTraversal << endl;
 
     return 0;
 }

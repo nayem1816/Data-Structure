@@ -26,6 +26,9 @@
 ## Tree
 
 1. Binary tree
+    1. Pre-order binary tree
+    2. In-order binary tree
+    3. Post-order binary tree
 
 ---
 

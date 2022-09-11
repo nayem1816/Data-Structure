@@ -31,6 +31,7 @@
     3. Post-order traversal
     4. Level-order traversal
     5. Pre Order to In Order
+    6. Boundary Traversal
 
 ---
 

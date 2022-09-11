@@ -137,6 +137,73 @@ void spacePrint(int level)
     }
 }
 
+void printLeaves(treeNode *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    if (root->leftChild == NULL && root->rightChild == NULL)
+    {
+        cout << root->data << " ";
+    }
+    printLeaves(root->leftChild);
+    printLeaves(root->rightChild);
+}
+void printLeftNonLeaves(treeNode *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    if (root->leftChild != NULL)
+    {
+        cout << root->data << " ";
+        printLeftNonLeaves(root->leftChild);
+    }
+    else if (root->rightChild != NULL)
+    {
+        cout << root->data << " ";
+        printLeftNonLeaves(root->rightChild);
+    }
+}
+void printRightNonLeaves(treeNode *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    if (root->rightChild != NULL)
+    {
+        cout << root->data << " ";
+        printLeftNonLeaves(root->rightChild);
+    }
+    else if (root->leftChild != NULL)
+    {
+        cout << root->data << " ";
+        printLeftNonLeaves(root->leftChild);
+    }
+}
+
+void boundaryTraversal(treeNode *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    cout << root->data << " ";
+
+    // LB Non-Leaves
+    printLeftNonLeaves(root->leftChild);
+    // LB Leaves
+    printLeaves(root->leftChild);
+    // RB Leaves
+    printLeaves(root->rightChild);
+    // RB Non-Leaves
+    printRightNonLeaves(root->rightChild);
+}
+
 int main()
 {
 
@@ -184,14 +251,16 @@ int main()
     // preOrder(allNodes[0], preOrderTraversal);
     // postOrder(allNodes[0], postOrderTraversal);
 
-    int maxValueAtK = levelOrderTraversal(allNodes[0], lavelordertraversal, 2);
+    // int maxValueAtK = levelOrderTraversal(allNodes[0], lavelordertraversal, 2);
 
     // cout << "In-order Traversal: " << inOrderTraversal << endl;
     // cout << "Pre-order Traversal: " << preOrderTraversal << endl;
     // cout << "Post-order Traversal: " << postOrderTraversal << endl;
 
-    cout << endl;
-    cout << maxValueAtK << endl;
+    // cout << endl;
+    boundaryTraversal(allNodes[0]);
+
+    // cout << maxValueAtK << endl;
 
     return 0;
 }

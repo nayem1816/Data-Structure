@@ -26,12 +26,18 @@
 ## Tree
 
 1. Binary tree
+
     1. Pre-order traversal
     2. In-order traversal
     3. Post-order traversal
     4. Level-order traversal
     5. Pre Order to In Order
     6. Boundary Traversal
+
+2. Binary Search tree
+    1. Insertion BST
+    2. Search BST
+    3. Delete BST
 
 ---
 

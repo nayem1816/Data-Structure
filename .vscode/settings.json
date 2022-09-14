@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.scss": "shellscript",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "ostream": "cpp"
     }
 }

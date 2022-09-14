@@ -24,7 +24,7 @@ void inOrder(treeNode *root, string &chk)
     if (root == NULL)
         return;
     inOrder(root->leftChild, chk);
-    chk += to_string(root->data);
+    chk += (to_string(root->data) + " ");
     inOrder(root->rightChild, chk);
 }
 void preOrder(treeNode *root, string &chk)
@@ -198,63 +198,151 @@ void boundaryTraversal(treeNode *root)
     printRightNonLeaves(root->rightChild);
 }
 
+treeNode *insertionBST(treeNode *root, int value)
+{
+    treeNode *newNode = new treeNode(value);
+
+    if (root == NULL)
+    {
+        root = newNode;
+        return root;
+    }
+    // value < root->value
+    if (value < root->data)
+    {
+        root->leftChild = insertionBST(root->leftChild, value);
+    }
+    // value > root->value
+    else if (value > root->data)
+    {
+        root->rightChild = insertionBST(root->rightChild, value);
+    }
+
+    return root;
+}
+
+treeNode *searchBST(treeNode *root, int value, string &chkPath)
+{
+    if (root == NULL)
+    {
+        return NULL;
+    }
+
+    if (value == root->data)
+    {
+        chkPath += (to_string(root->data) + " ");
+        return root;
+    }
+    else if (value < root->data)
+    {
+        chkPath += (to_string(root->data) + " ");
+        searchBST(root->leftChild, value, chkPath);
+    }
+    else
+    {
+        chkPath += (to_string(root->data) + " ");
+        searchBST(root->rightChild, value, chkPath);
+    }
+
+    return NULL;
+}
+
+treeNode *inOrderSuccessor(treeNode *root)
+{
+    treeNode *curr = root;
+    while (curr->leftChild != NULL)
+    {
+        curr = curr->leftChild;
+    }
+    return curr;
+}
+
+treeNode *deleteBST(treeNode *root, int value)
+{
+    if (value < root->data)
+    {
+        root->leftChild = deleteBST(root->leftChild, value);
+    }
+    else if (value > root->data)
+    {
+        root->rightChild = deleteBST(root->rightChild, value);
+    }
+    else
+    {
+        // IMPLEMENT 3 CASES
+        if (root->leftChild == NULL)
+        {
+            // case 1 && case 2
+            treeNode *temp = root->rightChild;
+            free(root);
+            return temp;
+        }
+        else if (root->rightChild == NULL)
+        {
+            // case 2
+            treeNode *temp = root->leftChild;
+            free(root);
+            return temp;
+        }
+        else
+        {
+            // case 3
+            treeNode *temp = inOrderSuccessor(root->rightChild);
+            root->data = temp->data;
+            root->rightChild = deleteBST(root->rightChild, temp->data);
+        }
+        return root;
+    }
+
+    return root;
+}
+
 int main()
 {
-
     int n;
     cin >> n;
-
-    treeNode *allNodes[n];
-
-    for (int i = 0; i < n; i++)
-    {
-        allNodes[i] = new treeNode(-1);
-    }
+    treeNode *root = NULL;
 
     for (int i = 0; i < n; i++)
     {
-        int val, left, right;
-        cin >> val >> left >> right;
-
-        allNodes[i]->data = val;
-
-        if (left > n - 1 || right > n - 1)
-        {
-            cout << "Invalid Index" << endl;
-            break;
-        }
-
-        if (left != -1)
-        {
-            allNodes[i]->leftChild = allNodes[left];
-        }
-        if (right != -1)
-        {
-            allNodes[i]->rightChild = allNodes[right];
-        }
+        int value;
+        cin >> value;
+        root = insertionBST(root, value);
     }
 
-    printTree(allNodes[0], 0);
+    string traversal = "";
+    inOrder(root, traversal);
+    cout << "In-order: " << traversal << endl;
 
-    // string inOrderTraversal = "";
-    // string preOrderTraversal = "";
-    // string postOrderTraversal = "";
-    // string lavelordertraversal = "";
-
-    // inOrder(allNodes[0], inOrderTraversal);
-    // preOrder(allNodes[0], preOrderTraversal);
-    // postOrder(allNodes[0], postOrderTraversal);
-
-    // int maxValueAtK = levelOrderTraversal(allNodes[0], lavelordertraversal, 2);
-
-    // cout << "In-order Traversal: " << inOrderTraversal << endl;
-    // cout << "Pre-order Traversal: " << preOrderTraversal << endl;
-    // cout << "Post-order Traversal: " << postOrderTraversal << endl;
+    // cout << "Enter the value to be searched: ";
+    // int key;
+    // cin >> key;
+    // string chkPath = "";
+    // treeNode *chkNode = searchBST(root, key, chkPath);
 
     // cout << endl;
-    // boundaryTraversal(allNodes[0]);
+    // cout << "Path is : " << chkPath << endl;
 
-    // cout << maxValueAtK << endl;
+    // if (chkNode == NULL)
+    // {
+    //     cout << endl
+    //          << "Value not found" << endl;
+    // }
+    // else
+    // {
+    //     cout << endl
+    //          << "Value found" << endl;
+    // }
+
+    cout << endl;
+
+    int delValue;
+    cout << "Enter the value to be deleted: ";
+    cin >> delValue;
+    root = deleteBST(root, delValue);
+    string traversal2 = "";
+    inOrder(root, traversal2);
+    cout << "After delete In-order: " << traversal2 << endl;
 
     return 0;
 }
@@ -265,14 +353,6 @@ Input Formate
 
 Total Node =
 9
-0 1 2
-1 3 4
-2 5 6
-3 -1 -1
-4 -1 -1
-5 7 8
-6 -1 -1
-7 -1 -1
-8 -1 -1
+11 5 9 43 34 1 2 7 21
 
 */

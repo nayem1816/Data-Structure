@@ -40,6 +40,10 @@
     2. Search BST
     3. Delete BST
 
+3. Heap
+    1. Heapify
+    2. heap sort
+
 ---
 
 ### Singly Linked List Operations

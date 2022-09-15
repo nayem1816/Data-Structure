@@ -3,5 +3,6 @@
         "*.scss": "shellscript",
         "iostream": "cpp",
         "ostream": "cpp"
-    }
+    },
+    "cSpell.words": ["Heapify"]
 }

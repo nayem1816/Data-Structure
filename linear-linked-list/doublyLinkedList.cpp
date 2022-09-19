@@ -57,22 +57,6 @@ void reverseDoublyList(doublyNode *&head)
         temp = next;
     }
     head = prev;
-
-    // doublyNode *temp = head;
-    // while (temp->next != NULL)
-    // {
-    //     temp = temp->next;
-    // }
-    // while (temp != NULL)
-    // {
-    //     cout << temp->value;
-    //     if (temp->prev != NULL)
-    //     {
-    //         cout << " -> ";
-    //     }
-    //     temp = temp->prev;
-    // }
-    // cout << endl;
 }
 
 void insertAtHead(doublyNode *&head, int value)

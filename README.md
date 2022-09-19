@@ -44,6 +44,11 @@
     1. Heapify
     2. heap sort
 
+## Graph
+
+1. Breath First Search (BFS)
+2. Depth First Search (DFS)
+
 ---
 
 ### Singly Linked List Operations

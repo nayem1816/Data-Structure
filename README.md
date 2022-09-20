@@ -46,7 +46,7 @@
 
 ## Graph
 
-1. Breath First Search (BFS)
+1. Bredth First Search (BFS)
 2. Depth First Search (DFS)
 
 ---
